@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+Created on Thu May 14 14:57:18 2020
+
+@author: ivan.sheng
+"""
 
 from urllib.request import Request, urlopen # requests library, sends the HTTP request to the site's server to return the HTML page source
 from bs4 import BeautifulSoup # library to parse HTML documents
