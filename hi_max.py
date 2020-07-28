@@ -29,7 +29,7 @@ import pickle
 df = #dataframe
 
 lemmatizer = WordNetLemmatizer()
-remove = ['https', 'http','&amp','amp', 'small business', 'www', 'com', 'http', 'images', 'uri', 'original', 'reddit','youtube','likes','replies', 'url', 'amazonaws', 'wikipedia', 'org','wiki',"spoiler"]
+remove = ['https', 'http','&amp','amp', 'www', 'com', 'http', 'images', 'uri', 'original', 'reddit','youtube','likes','replies', 'url', 'amazonaws', 'wikipedia', 'org','wiki',"spoiler"]
 stopwords = nltk.corpus.stopwords.words('english')
 stopwords.extend(remove)
 stop_words = set(stopwords) 
