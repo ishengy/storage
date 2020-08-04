@@ -99,7 +99,7 @@ scores = []
 for i in tfidf_corpus:
     scores.append(lda[i])
 
-combine['cluster_scores'] = scores
+df['cluster_scores'] = scores
 
 topics = []
 for i, row in enumerate(combine['cluster_scores']):
