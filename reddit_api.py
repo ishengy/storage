@@ -16,18 +16,18 @@ import pickle
 path = 'C:/Users/ivan.sheng/Downloads/' #path for export
 os.chdir(path)
 
-reddit = praw.Reddit(client_id='VaUjLSLZnGKnsQ',
-                     client_secret='VGonfWF3BKVr0g3IzyYFXvTzDdA',
+reddit = praw.Reddit(client_id='',
+                     client_secret='',
                      user_agent='reddit-explorer',
-                     username='PM_ME_COSPLAY_BUTT', #fill in username
-                     password='devil1202') #fill in password
+                     username='', #fill in username
+                     password='') #fill in password
 
 def get_submission_date(submission):
     time = submission.created
     return datetime.date.fromtimestamp(time)
 
 subs = ['Thritis']
-#keywords = ['arthritis']
+keywords = ['arthritis']
 
 
 #keywords = ['Diet',
