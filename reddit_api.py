@@ -13,9 +13,6 @@ import os
 import pickle
 #from praw.models import MoreComments
 
-path = 'C:/Users/ivan.sheng/Downloads/' #path for export
-os.chdir(path)
-
 reddit = praw.Reddit(client_id='',
                      client_secret='',
                      user_agent='reddit-explorer',
