@@ -29,51 +29,6 @@ def get_submission_date(submission):
 subs = ['Thritis']
 keywords = ['arthritis']
 
-
-#keywords = ['Diet',
-#            'Gluten-free',
-#            'Digestive suppliment',
-#            'Fiber',
-#            'Digestive enzymes',
-#            'probiotics',
-#            'Kefir',
-#            'Castor Oil',
-#            'Prunes',
-#            'Magnesium citrate',
-#            'FODMAP',
-#            'Senna Tea',
-#            'Apple Cider Vinegar',
-#            'Peppermint Tea',
-#
-#            "IBS",
-#            "IBD",
-#            "Crohn's disease",
-#            "coeliac ",
-#            "Leaky Gut ",
-#            "Eating Disorder",
-#            
-#            "indigestion",
-#            "nausea",
-#            "belly cramps",
-#            "belly pain",
-#            "bloating",
-#            "distention",
-#            "flatulence",
-#            "bleching",
-#            "gasy",
-#            "constipation",
-#            "hard stools",
-#            "Irregular bowel movements ",
-#            "vomit",
-#            "Hemorrhoids",
-#            "Blood in stool ",
-#            "trouble sleeping",
-#            "back pain",
-#            "loss of appetite",
-#            "fatigue",
-#            "dizziness",
-#            "anxiety"]
-
 topics_dict = { "title":[], \
                 "score":[], \
                 "id":[], \
@@ -100,7 +55,11 @@ for s in subs:
             topics_dict["body"].append(submission.selftext)
             topics_dict["sub"].append(submission.subreddit.display_name)
             topics_dict["date"].append(get_submission_date(submission))
-                
+
+topics_data = pd.DataFrame(topics_dict)
+topics_data.drop_duplicates(subset = ['title'], keep='first', inplace=True)
+pickle.dump( topics_data, open( "reddit_posts.p", "wb" ))
+
 #count =0
 #for s in subs:
 #    subreddit = reddit.subreddit(s)
@@ -121,11 +80,6 @@ for s in subs:
 #                topics_dict["sub"].append(submission.subreddit.display_name)
 #                topics_dict["date"].append(get_submission_date(submission))
 #                topics_dict["keyword"].append(word)
-
-topics_data = pd.DataFrame(topics_dict)
-topics_data.drop_duplicates(subset = ['title'], keep='first', inplace=True)
-pickle.dump( topics_data, open( "topical.p", "wb" ))
-#topics_data.to_csv('smallbiz-pub.csv', index=False)
 
 ##comments too
 #comments_dict = { "title":[], \
