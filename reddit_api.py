@@ -42,44 +42,28 @@ topics_dict = { "title":[], \
 count =0
 for s in subs:
     subreddit = reddit.subreddit(s)
-    for submission in subreddit.top('all',limit=1000):
-        if submission.selftext == '':
-            continue
-        else:
-            topics_dict["title"].append(submission.title)
-            topics_dict["score"].append(submission.score)
-            topics_dict["id"].append(submission.id)
-            topics_dict["url"].append(submission.url)
-            topics_dict["comms_num"].append(submission.num_comments)
-            topics_dict["created"].append(submission.created)
-            topics_dict["body"].append(submission.selftext)
-            topics_dict["sub"].append(submission.subreddit.display_name)
-            topics_dict["date"].append(get_submission_date(submission))
+    print(s)
+    for word in keywords:
+        print(word)
+        for submission in subreddit.search(word, limit = None):
+            if submission.selftext == '':
+                continue
+            else:
+                topics_dict["title"].append(submission.title)
+                topics_dict["score"].append(submission.score)
+                topics_dict["id"].append(submission.id)
+                topics_dict["url"].append(submission.url)
+                topics_dict["comms_num"].append(submission.num_comments)
+                topics_dict["created"].append(submission.created)
+                topics_dict["body"].append(submission.selftext)
+                topics_dict["sub"].append(submission.subreddit.display_name)
+                topics_dict["date"].append(get_submission_date(submission))
+                topics_dict["keyword"].append(word)
 
 topics_data = pd.DataFrame(topics_dict)
 topics_data.drop_duplicates(subset = ['title'], keep='first', inplace=True)
 pickle.dump( topics_data, open( "reddit_posts.p", "wb" ))
 
-#count =0
-#for s in subs:
-#    subreddit = reddit.subreddit(s)
-#    print(s)
-#    for word in keywords:
-#        print(word)
-#        for submission in subreddit.search(word, limit = None):
-#            if submission.selftext == '':
-#                continue
-#            else:
-#                topics_dict["title"].append(submission.title)
-#                topics_dict["score"].append(submission.score)
-#                topics_dict["id"].append(submission.id)
-#                topics_dict["url"].append(submission.url)
-#                topics_dict["comms_num"].append(submission.num_comments)
-#                topics_dict["created"].append(submission.created)
-#                topics_dict["body"].append(submission.selftext)
-#                topics_dict["sub"].append(submission.subreddit.display_name)
-#                topics_dict["date"].append(get_submission_date(submission))
-#                topics_dict["keyword"].append(word)
 
 ##comments too
 #comments_dict = { "title":[], \
