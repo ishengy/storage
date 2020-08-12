@@ -102,7 +102,7 @@ for i in tfidf_corpus:
 df['cluster_scores'] = scores
 
 topics = []
-for i, row in enumerate(combine['cluster_scores']):
+for i, row in enumerate(df['cluster_scores']):
     row = sorted(row, key=lambda x: (x[1]), reverse=True)
     for j, (topic_num, prop_topic) in enumerate(row):
         if j == 0:
@@ -124,4 +124,4 @@ for t in main_idea:
 df['final_cluster'] = topics
 print(df.groupby('final_cluster').count()) # How many articles in each cluster
 
-pickle.dump( combine, open( "file-clusters.p", "wb" ))
+pickle.dump( df, open( "file-clusters.p", "wb" ))
